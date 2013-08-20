@@ -1,14 +1,113 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<style>
+		
+		html, head, body, title, figure, img, h2, ul, li, a, p, footer {
+			padding:0;
+			margin:0;
+			border:0;
+			vertical-align:0;
+			font:inherit;
+			font-size:100%;
+		}
+		
+		ul {
+			list-style:none;
+		}
+		
+		html {
+			height:100%;
+			font-family:sans-serif;
+		}
+		
+		body {
+			height:100%;
+		}
+		
+		figure {
+			width:180px;
+			height:180px;
+			text-align:center;
+			overflow:hidden;
+			border:10px solid white;
+			margin:auto;
+			margin-top:25px;
+		}
+		
+		img {
+			margin-left:-30px;
+			margin-top:-20px;
+		}
+		
+		.clearfix:after {
+			clear:both;
+			display:table;
+			content:"";
+		}
+		
+		h2{
+			font-size:20px;
+			font-weight:bold;
+		}
+		
+		.side-bar {
+			float:left;
+			height:250px;
+			width:250px;		
+			background-color:black;
+		}
+		
+		.content{
+			float:right;
+			padding:25px;
+			width:700px;
+		}
+		.container{
+			position:relative;
+			width:1000px;
+			margin:auto;
+			height:800px;
+			clear:none;
+		}
+		
+		footer {
+			position:fixed;
+			display:block;
+			top:100%;
+			padding:10px;
+			margin-top:-40px;
+			width:100%;
+		}
+		
+	</style>
+</head>
 
+<body>
 <title>Portfolio Page</title>
 
-<figure><img src="https://fbcdn-sphotos-c-a.akamaihd.net/hphotos-ak-prn1/13051_216797977255_5556332_n.jpg" width="302" height="182" alt="Profile"></figure>
-<h2>Projects</h2>
-<ul>
-	<li><a href="promiseapp.herokuapp.com">PromiseApp</a></li>
-	<li><a href="#">Asteroids</a></li>
-</ul>
+<div class="container clearfix">
+<section class="side-bar">
+	<figure>
+		<img src="images/profile2.jpg" width="302" height="226" alt="Profile2">
+	</figure>
+</section>
+	<section class= "content">
+		<h2>Projects</h2>
+		<ul>
+			<li><a href="http://promiseapp.herokuapp.com">PromiseApp</a></li>
+			<li><a href="asteroids.html" title="asteroids">Asteroids</a></li>
+		</ul>
+		
+		<h2>About me</h2>
+		<p>Ruby-Rails Web Developer. Love music, and all things artsy. I sing, play the cello and I don't really like eating tweety. </p> 
+		
+		<h2>Dev Skills</h2>
+		<p>From the bottom up, I've been picking up OOP, MVC, TDD, SQL, Rails, Ruby, Backbone, JavaScript, JQuery, AJAX, UJS, CSS and HTML. I've had experience in paired programming and I've moved from checkers, chess, poker, twitter clone, blog clones, reddit clone, google circle clone, google map api ice cream finder, rss feed/ newsreader, pieces of my own version of active record/rails/backbone to my most recent project, my PromiseApp which is a facebook-y kind of clone. I also put up my Asteroids which was a side project. Both are ongoing projects but I plan on finishing them soon! Check them out and Check out the github repositories to check out my code~'</p>
+	</section>
+</div>
 
-<h2>Personal Summary</h2>
-<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
 
 <footer>&copy; AndrewKang 2013</footer>
+</body>
+</html>
