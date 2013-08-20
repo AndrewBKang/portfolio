@@ -72,7 +72,7 @@ Game.prototype.update = function () {
   updateShip();
 	
 	var hit = false;
-	_.each(that.game.asteroids, function(asteroid){
+	_.each(that.asteroids, function(asteroid){
 		if(that.ship.isHit()) {
 			hit = true;
 		}
