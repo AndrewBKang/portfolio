@@ -8,6 +8,8 @@ var Game = function (screenX, screenY, numAsteroids) {
 	this.lives = 3;
 	this.score = 0;
 	this.gameOver = false;
+	this.seconds = 0;
+	this.tenths = 0;
 };
 
 Game.prototype.nextLife = function(){
@@ -28,6 +30,8 @@ Game.prototype.resetGame = function(){
 	this.nextLife();
 	this.lives = 3;
 	this.gameOver = false;
+	this.seconds = 0;
+	this.tenths = 0;
 }
 
 Game.prototype.makeAsteroids = function (num) {
@@ -63,6 +67,9 @@ Game.prototype.render = function (ctx) {
 	ctx.font = "12pt Arial";
 	ctx.fillText("Lives: " + that.lives, 5, 15);
 	ctx.fillText("Score: " + that.score,	5, 35);
+	ctx.fillStyle = "white";
+	ctx.font = "12pt Arial";
+	ctx.fillText("Time: " + that.seconds + "." + that.tenths, 5, 495);
 	
 	if (this.lives < 1){
 		ctx.fillStyle = "white";
@@ -78,12 +85,21 @@ Game.prototype.draw = function (canvasEl) {
   var ctx = canvasEl.getContext("2d");
   // render
   var that = this;
-  setInterval(function () {
+  
+	setInterval(function () {
 		if (!(that.gameOver)) {
 			that.render(ctx);
 			that.update();
 		}
   }, 33);
+	
+	setInterval(function (){
+		that.tenths = (that.tenths + 1) % 10;
+	}, 100);
+	
+	setInterval(function (){
+		that.seconds ++;
+	}, 1000);
 	
 	key('space', function(){
 		if(that.gameOver){		
