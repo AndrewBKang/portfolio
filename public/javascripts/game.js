@@ -23,6 +23,13 @@ Game.prototype.nextLife = function(){
 	this.bullets = [];
 }
 
+Game.prototype.resetGame = function(){
+	this.score = 0;
+	this.nextLife();
+	this.lives = 3;
+	this.gameOver = false;
+}
+
 Game.prototype.makeAsteroids = function (num) {
   var that = this;
   var asteroids = [];
@@ -61,6 +68,8 @@ Game.prototype.render = function (ctx) {
 		ctx.fillStyle = "white";
 		ctx.font = "20pt Arial";
 		ctx.fillText("GAMEOVER", 170,250);
+		ctx.font = "10pt Arial";
+		ctx.fillText("press space to continue", 180,265)
 		that.gameOver = true;
 	}
 };
@@ -69,10 +78,19 @@ Game.prototype.draw = function (canvasEl) {
   var ctx = canvasEl.getContext("2d");
   // render
   var that = this;
-  window.setInterval(function () {
-		that.render(ctx);
-		that.update();
+  setInterval(function () {
+		if (!(that.gameOver)) {
+			that.render(ctx);
+			that.update();
+		}
   }, 33);
+	
+	key('space', function(){
+		if(that.gameOver){		
+			that.resetGame();
+		}
+	});
+	
 };
 
 Game.prototype.update = function () {
