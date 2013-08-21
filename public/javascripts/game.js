@@ -1,11 +1,27 @@
 var Game = function (screenX, screenY, numAsteroids) {
   this.screenX = screenX;
   this.screenY = screenY;
+	this.numAsteroids = numAsteroids;
   this.asteroids = this.makeAsteroids(numAsteroids);
 	this.bullets = [];
   this.ship = new Ship(this);
+	this.lives = 3;
+	this.score = 0;
 	this.gameOver = false;
 };
+
+Game.prototype.nextLife = function(){
+	this.asteroids = this.makeAsteroids(10);
+	this.ship.centerX = this.screenX/2;
+	this.ship.centerY = this.screenY/2;
+  this.ship.angle = 0;
+  this.ship.velocity = { x:0, y:0 }
+  this.ship.acceleration = { x:0, y:0 }
+  this.ship.angularVelocity = 0;
+	this.ship.power = false;
+	this.ship.hasBullets = true;
+	this.bullets = [];
+}
 
 Game.prototype.makeAsteroids = function (num) {
   var that = this;
@@ -20,9 +36,10 @@ Game.prototype.makeAsteroids = function (num) {
 };
 
 Game.prototype.render = function (ctx) {
+	var that = this;
   ctx.fillStyle = "black";
   ctx.fillRect(0, 0, this.screenX, this.screenY);
-
+	
   var renderAsteroid = function (asteroid) {
     asteroid.render(ctx);
   };
@@ -37,18 +54,24 @@ Game.prototype.render = function (ctx) {
 	
 	ctx.fillStyle = "white";
 	ctx.font = "12pt Arial";
-	ctx.fillText("Lives: ", 5, 15);
-	ctx.fillText("Score: ",	5, 35);
+	ctx.fillText("Lives: " + that.lives, 5, 15);
+	ctx.fillText("Score: " + that.score,	5, 35);
+	
+	if (this.lives < 1){
+		ctx.fillStyle = "white";
+		ctx.font = "20pt Arial";
+		ctx.fillText("GAMEOVER", 170,250);
+		that.gameOver = true;
+	}
 };
 
 Game.prototype.draw = function (canvasEl) {
   var ctx = canvasEl.getContext("2d");
-
   // render
   var that = this;
   window.setInterval(function () {
-    that.render(ctx);
-    that.update();
+		that.render(ctx);
+		that.update();
   }, 33);
 };
 
@@ -60,6 +83,13 @@ Game.prototype.update = function () {
 			shipHit = true;
 		}
 	});
+	
+	if (shipHit) {
+		that.lives--;
+		if (that.lives > 0) {
+			that.nextLife();
+		}
+	}
 
   var updateShip = function () {
 		
@@ -96,6 +126,7 @@ Game.prototype.update = function () {
 			  }
 				var asteroidIndex = that.asteroids.indexOf(asteroid);
 				that.bullets.splice(index, 1);
+				that.score += 10;
 				if (asteroid.radius == 24) {
 					that.asteroids = that.asteroids.concat(
 						[Asteroid.newAsteroid(asteroid,that,12),Asteroid.newAsteroid(asteroid,that,12)]
@@ -103,6 +134,10 @@ Game.prototype.update = function () {
 				} else if (asteroid.radius == 36){
 					that.asteroids = that.asteroids.concat(
 						[Asteroid.newAsteroid(asteroid,that,24),Asteroid.newAsteroid(asteroid,that,24)]
+					);
+				} else if (asteroid.radius == 12){
+					that.asteroids = that.asteroids.concat(
+						[Asteroid.newAsteroid(asteroid,that,6),Asteroid.newAsteroid(asteroid,that,6)]
 					);
 				}
 				that.asteroids.splice(asteroidIndex, 1);
@@ -117,10 +152,5 @@ Game.prototype.update = function () {
 	_.each(this.bullets,updateBullet)
   _.each(this.asteroids, updateAsteroid);
   updateShip();
-	
-	if(shipHit){
-		// that.gameOver = true;
-		// lives -1
-	}
 
 };

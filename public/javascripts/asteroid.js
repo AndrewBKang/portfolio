@@ -33,8 +33,8 @@ Asteroid.newAsteroid = function(oldAsteroid,game,newSize) {
     oldAsteroid.centerX,
     oldAsteroid.centerY,
     newSize,
-    Asteroid.MAX_VELOCITY * Math.random() * yingYang(),
-    Asteroid.MAX_VELOCITY * Math.random() * yingYang(),
+    Asteroid.MAX_VELOCITY * Math.random() * yingYang() + oldAsteroid.deltaX,
+    Asteroid.MAX_VELOCITY * Math.random() * yingYang() + oldAsteroid.deltaY,
     game
 	);
 }
