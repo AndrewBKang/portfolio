@@ -3,7 +3,7 @@
 <head>
 	<style>
 		
-		html, head, body, title, figure, img, h2, h3, ul, a, p, footer {
+		html, head, body, title, figure, img, h2, h3, ul, a, p, footer, div {
 			padding:0;
 			margin:0;
 			border:0;
@@ -14,6 +14,10 @@
 		
 		ul {
 			list-style:none;
+		}
+		
+		a {
+			text-decoration:none;
 		}
 		
 		li {
@@ -28,6 +32,18 @@
 		
 		body {
 			height:100%;
+			background-color:black;
+			background-image:url(http://hdwallfan.com/wp-content/uploads/2013/07/Awesome-Wallpaper-HD-PC.jpg);
+			background-attachment:fixed;
+			background-size:100%;
+		}
+		
+		.profile-frame {
+			border:10px solid white;
+		}
+		
+		.promisrs-frame {
+			border:10px solid lightblue;
 		}
 		
 		figure {
@@ -35,12 +51,11 @@
 			height:180px;
 			text-align:center;
 			overflow:hidden;
-			border:10px solid white;
+			border:10px solid lightgreen;
 			margin:auto;
-			margin-top:25px;
 		}
 		
-		img {
+		.profile-pic {
 			margin-left:-30px;
 			margin-top:-20px;
 		}
@@ -64,14 +79,16 @@
 		.side-bar {
 			float:left;
 			height:250px;
-			width:250px;		
-			background-color:teal;
+			width:250px;
 		}
 		
 		.content{
 			float:right;
 			padding:25px;
 			width:700px;
+			background-color:rgba(255,255,255,.8);
+			border-radius:10px;
+			overflow:hidden;
 		}
 		.container{
 			position:relative;
@@ -80,6 +97,7 @@
 			clear:none;
 			margin-top:25px;
 		}
+
 		
 		footer {
 			position:fixed;
@@ -95,45 +113,254 @@
 			margin:auto;
 		}
 		
+		.nav {
+			height:50px;
+		}
+		
+		.navbar {
+			height:150px;
+			width:1000px;
+			margin:auto;
+			background-repeat:no-repeat;
+		}
+		
+		.navbar > li {
+			float:left;
+			padding:10px;
+			padding-top:20px;
+			margin-left:130px;
+		}
+		
+		.navbar > li > a {
+			padding:10px;
+			color:white;
+			font-family: "Comic Sans MS", cursive, sans-serif;
+		}
+		
+		.navbar > li > a:hover {
+			border-radius:10px;
+			overflow:hidden;
+			background-color:rgba(255,255,255,.5);
+			-webkit-transition:background-color 1s;
+		}
+		
+		.navbar > li:first-child > a {
+		}
+		
+		.projects {
+			float:left;
+			width:1000px;
+			margin-top:25px;
+		}
+		
+		.projects > li {
+			float:left;
+			padding-left:0;
+		}
+		
+		.project-image {
+			width:250px;
+			float:left;
+		}
+		
+		.projects > li > div > figure {
+			margin-top:0px;
+			margin-bottom:25px;
+		}
+		
+		.projects > li > .content > p {
+			font-size:14px;
+			float:left;
+		}
+		
+		.projects > li:last-child {
+			padding-bottom:40px;
+		}
+		
+		.tab {
+			display:none;
+		}
+		
+		.about-me {
+			display:block;
+		}
+		
+		.active-tab {
+			background-color:rgba(255,255,255,.5);
+			border-radius:10px;
+			overflow:hidden;
+		}
+		
+		.animated{-webkit-animation-fill-mode:both;-moz-animation-fill-mode:both;-ms-animation-fill-mode:both;-o-animation-fill-mode:both;animation-fill-mode:both;-webkit-animation-duration:1s;-moz-animation-duration:1s;-ms-animation-duration:1s;-o-animation-duration:1s;animation-duration:1s;}.animated.hinge{-webkit-animation-duration:1s;-moz-animation-duration:1s;-ms-animation-duration:1s;-o-animation-duration:1s;animation-duration:1s;}@-webkit-keyframes wobble {
+
+		  0% { -webkit-transform: translateX(0%); } 15% { -webkit-transform: translateX(-25%) rotate(-5deg); }
+		  30% { -webkit-transform: translateX(20%) rotate(3deg); }
+		  45% { -webkit-transform: translateX(-15%) rotate(-3deg); }
+		  60% { -webkit-transform: translateX(10%) rotate(2deg); }
+		  75% { -webkit-transform: translateX(-5%) rotate(-1deg); }
+		  100% { -webkit-transform: translateX(0%); }
+		}
+
+		@-moz-keyframes wobble {
+		  0% { -moz-transform: translateX(0%); }
+		  15% { -moz-transform: translateX(-25%) rotate(-5deg); }
+		  30% { -moz-transform: translateX(20%) rotate(3deg); }
+		  45% { -moz-transform: translateX(-15%) rotate(-3deg); }
+		  60% { -moz-transform: translateX(10%) rotate(2deg); }
+		  75% { -moz-transform: translateX(-5%) rotate(-1deg); }
+		  100% { -moz-transform: translateX(0%); }
+		}
+
+		@-o-keyframes wobble {
+		  0% { -o-transform: translateX(0%); }
+		  15% { -o-transform: translateX(-25%) rotate(-5deg); }
+		  30% { -o-transform: translateX(20%) rotate(3deg); }
+		  45% { -o-transform: translateX(-15%) rotate(-3deg); }
+		  60% { -o-transform: translateX(10%) rotate(2deg); }
+		  75% { -o-transform: translateX(-5%) rotate(-1deg); }
+		  100% { -o-transform: translateX(0%); }
+		}
+
+		@keyframes wobble {
+		  0% { transform: translateX(0%); }
+		  15% { transform: translateX(-25%) rotate(-5deg); }
+		  30% { transform: translateX(20%) rotate(3deg); }
+		  45% { transform: translateX(-15%) rotate(-3deg); }
+		  60% { transform: translateX(10%) rotate(2deg); }
+		  75% { transform: translateX(-5%) rotate(-1deg); }
+		  100% { transform: translateX(0%); }
+		}
+
+		.wobble {
+			-webkit-animation-name: wobble;
+			-moz-animation-name: wobble;
+			-o-animation-name: wobble;
+			animation-name: wobble;
+		}
+		
 	</style>
+	<script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
 </head>
 
 <body>
 <title>Portfolio Page</title>
 
+<div class="nav">
+	<ul class="navbar">
+		<li><a id="about" class="active-tab" href="#">About Me</a></li>
+		<li><a id="skill" href="#">Skills</a></li>
+		<li><a id="update" href="#">Updates</a></li>
+		<li><a id="github" href="#">GitHub</a></li>
+	</div>
+</div>
+
 <div class="container clearfix">
-<section class="side-bar">
-	<figure>
-		<img src="images/profile2.jpg" width="302" height="226" alt="Profile2">
-	</figure>
-</section>
+	
+	<section class="side-bar">
+		<figure class="profile-frame">
+			<img class="profile-pic" src="images/profile2.jpg" width="302" height="226" alt="Profile2">
+		</figure>
+	</section>
+
 	<section class= "content">
-		<h2>Projects</h2>
-		<p>
-			<a href="http://www.promisrs.com">PromiseApp</a> - demo users on bottom of the sign in page; (multiple users for changes on friendships)<br>
-			<a href="asteroids.html" title="asteroids">Asteroids</a>
-		</p>
-		<br>
-		<h2>Github Repos</h2>
-		<p><a href="https://github.com/AndrewBKang/PromiseApp">promise app</a><br>
-		<a href="https://github.com/AndrewBKang/asteroids_redo">asteroids</a></p>
-		<br>
-		<h2>About me</h2>
-		<p>Ruby-Rails Web Developer. I love the blues and I don't really like eating tweety.</p> 
-		<br>
 		
-		<h2>Skills</h2>
-		<p>From the bottom up, I've been picking up OOP, MVC, TDD, SQL, Rails, Ruby, Backbone, JavaScript, JQuery, AJAX, UJS, CSS and HTML. I've had experience in paired programming and built checkers, chess, poker, a twitter clone, blog clones, a reddit clone, a google circle clone, a google map api ice cream finder, an rss feed/ newsreader, my own mini versions of active record/rails/backbone and my most recent project, my PromiseApp which is a facebook-y kind of clone. I also put up my Asteroids which was a side project. Both are ongoing projects but I plan on finishing them soon! Check them out and Check out the github repositories to check out my code~</p>
-		<br>
+		<div class="tab">
+			<h2>Projects</h2>
+			<p>
+				<a href="http://www.promisrs.com">Promisrs</a> - demo users on bottom of the sign in page; (multiple users for changes on friendships)<br>
+				<a href="asteroids.html" title="asteroids">Asteroids</a>
+			</p>
+		</div>
 		
+		<div class="github tab">
+			<h2>Github Repos</h2>
+			<p><a href="https://github.com/AndrewBKang/PromiseApp">promisrs</a><br>
+			<a href="https://github.com/AndrewBKang/asteroids_redo">asteroids</a></p>
+		</div>
+		
+		<div class="about-me tab">
+			<h2>About me</h2>
+			<p>Ruby-Rails Web Developer. I love the blues and I don't actually like eating tweety. Graduated from Dartmouth College in 2011 with a B.A. in mathematics, and I love elegant code and challenging puzzles. Now play with my buttons, play some asteroids and sign up for promisrs!</p> 
+		</div>
+		
+		<div class="skills tab">
+			<h2>Skills</h2>
+			<p>From the bottom up, I've been picking up OOP, MVC, TDD, SQL, Rails, Ruby, Backbone, JavaScript, JQuery, AJAX, UJS, CSS and HTML. I've had experience in paired programming and built checkers, chess, poker, a twitter clone, blog clones, a reddit clone, a google circle clone, a google map api ice cream finder, an rss feed/ newsreader, my own mini versions of active record/rails/backbone and my most recent project, my PromiseApp which is a facebook-y kind of clone. I also put up my Asteroids which was a side project. Both are ongoing projects but I plan on finishing them soon! Check them out and Check out the github repositories to check out my code~</p>
+		</div>	
+		
+		<div class="updates tab">
 		<h2>Updates</h2>
 		<p>--tuesday, aug 20th 22:44: just finished asteroids woohoo! need to go back and refactor but not today</p>
 		<p>--thursday, aug 22nd 01:09: just did a lot with promisrs, updates are good and commentable, lots of problems today from ujs issues and file uploading, but they're all resolved, even got demo users, and fixed a lot of jquery ui, on ajax appends. next step is to make a real comment partial that looks nice, and a nice way to make the updates present the update pictures and make likes functional, the front end and back end is there, just need to meddle with the middle</p>
-		<p>--thursday, aug22nd 16:09: finished like functionality, not shoing users that liked the post on click yet though</p>
+		<p>--thursday, aug22nd 16:09: finished like functionality, not showing users that liked the post on click yet though</p>
+		<p>--sunday, sept1st 10:11: grabbed a background image from twitter, added some animations to nav bar, making things perty (promisrs)</p>
+		<p>--monday, sept2nd 5:57: changed asteroids bullet speed and starting point to adjust with ship speed</p>
+		<p>--tuesday, sept3rd 22:00: did some basic front end stuff to portfolio page</p>
+		<p>--wednesday, sept4th 11:57: asteroids respawn when killing the whole screen</p>
+	</div>
+	</section>
+	
+	<ul class="projects">
+		<li>
+			<div class="project-image">
+				<figure class="promisrs-frame">
+					<a href="http://www.promisrs.com"><img class="promisrs-pic" src="images/promisrs.png" height="180"></a>
+				</figure>
+			</div>
+			<div class="content">
+				<h2>Promisrs.com</h2>
+				<p>This is a web app for all of your promises and resolutions. The finished product will have promises and resolutions they die if they aren't attended to. The social aspect of it, is a basic facebook clone. Friending, notifications, newsfeed, comments, likes are all there. If you want to check it out without signing up, there are demo users on the sign in page.</p>
+			</div>
+		</li>
+		<li>
+			<div class="project-image">
+				<figure>
+					<a href="asteroids.html" title="asteroids"><img src="images/asteroids.gif" height="180"></a>
+				</figure>
+			</div>
+			<div class="content">
+				<h2>Asteroids!</h2>
+				<p>Good old asteroids, press up left right to move around fluidly, and spacebar to shoot and restart the game if you lose all of your lives.</p>
+			</div>
+		</li>
 	</section>
 </div>
 
+<script>
+$(".navbar > li").hover(
+	function(){$(this).addClass('animated wobble')},
+	function(){$(this).removeClass('animated wobble')}
+);
 
-<footer><div>&copy; AndrewKang 2013</div></footer>
+$(".navbar > li > a").on('click',function(){
+	$(this).parent().siblings().find('a').removeClass('active-tab');
+	$(this).addClass('active-tab');
+});
+
+$("#about").on('click',function(){
+	$('.about-me').siblings().hide();
+	$('.about-me').slideDown();
+});
+
+$('#skill').on('click',function(){
+	$('.skills').siblings().hide();
+	// $('.skills').addClass('active');
+	$('.skills').slideDown();
+});
+
+$('#update').on('click',function(){
+	$('.updates').siblings().hide();
+	$('.updates').slideDown();
+});
+
+$('#github').on('click',function(){
+	$('.github').siblings().hide();
+	$('.github').slideDown();
+});
+	
+</script>
+
+
+<!-- <footer><div>&copy; AndrewKang 2013</div></footer> -->
 </body>
 </html>
